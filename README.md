@@ -1,104 +1,49 @@
+```markdown
 # Aigeon AI Google Hotels API
 
-## Project Description
+## Overview
 
-The `aigeon-ai.google-hotels-api` is a Python-based server application designed to interact with Google Hotels through the SerpAPI. It provides a robust interface for searching hotel accommodations with various customizable parameters, allowing users to tailor their search results based on specific needs such as location, dates, price range, amenities, and more. This project leverages the FastMCP framework to facilitate efficient and scalable API interactions.
+The Aigeon AI Google Hotels API is a powerful server application designed to facilitate seamless integration with Google Hotels search capabilities. This server leverages the SerpAPI to provide comprehensive hotel search functionalities, allowing users to query for hotel information based on a wide array of parameters. The application is built using Python and utilizes the FastMCP server framework for efficient and scalable operations.
 
 ## Features Overview
 
-- Seamless integration with Google Hotels via SerpAPI.
-- Customizable search parameters to refine hotel search results.
-- Support for both hotel and vacation rental searches.
-- Advanced filtering options including price, rating, property type, and amenities.
-- Multi-language and multi-currency support.
-- Asynchronous search capabilities for improved performance.
+- **Comprehensive Search Parameters**: The API allows users to perform detailed hotel searches using a variety of parameters such as location, check-in/out dates, number of guests, price range, property types, amenities, and more.
+- **Customization Options**: Users can customize their search queries with options like language, currency, sorting preferences, and filtering by hotel class or brand.
+- **Support for Vacation Rentals**: In addition to hotels, the API supports searches for vacation rentals, with specific parameters for bedrooms and bathrooms.
+- **Advanced Filtering**: The API provides advanced filtering options such as free cancellation, special offers, eco-certification, and more.
+- **Pagination and Caching**: The API supports pagination through next page tokens and offers caching options to optimize search performance.
 
 ## Main Features and Functionality
 
-- **Hotel Search**: Perform detailed searches for hotels using a wide range of parameters such as check-in/out dates, location, number of guests, and more.
-- **Vacation Rentals**: Option to search specifically for vacation rentals with additional parameters like number of bedrooms and bathrooms.
-- **Sorting and Filtering**: Sort results by relevance, price, rating, and more. Filter results based on price range, property type, amenities, and other criteria.
-- **Internationalization**: Specify language and currency preferences to cater to international users.
-- **Caching and Asynchronous Requests**: Utilize caching to optimize repeated queries and asynchronous requests for non-blocking operations.
+1. **Search Hotels**: The core functionality of the API is to perform hotel searches based on user-defined parameters. It utilizes the SerpAPI to fetch results from Google Hotels, ensuring accurate and up-to-date information.
 
-## API Endpoints or Main Functions Description
+2. **Parameter Customization**: Users can define a wide range of parameters to tailor their search queries. This includes specifying the search query, check-in and check-out dates, geographical location, language, currency, and more.
+
+3. **Filtering and Sorting**: The API allows users to filter results based on criteria such as price range, property type, amenities, rating, and brand. Additionally, results can be sorted by relevance, price, rating, or number of reviews.
+
+4. **Support for Vacation Rentals**: The API extends its functionality to include vacation rental searches, with parameters for specifying the number of bedrooms and bathrooms.
+
+5. **Advanced Options**: Users can enable advanced options such as no-cache searches, asynchronous search submissions, and enterprise-level features like ZeroTrace mode.
+
+## Main Functions Description
 
 ### `search_hotels`
 
-This function is the core of the application, providing a comprehensive interface for querying Google Hotels. It accepts numerous parameters to customize the search:
+The `search_hotels` function is the primary tool for querying hotel information. It accepts a comprehensive set of parameters that allow users to customize their search queries extensively. Below is a description of the key parameters:
 
-- **q**: Search query string.
-- **check_in_date**: Check-in date in `YYYY-MM-DD` format.
-- **check_out_date**: Check-out date in `YYYY-MM-DD` format.
-- **gl**: Country code for search localization.
-- **hl**: Language code for search localization.
-- **currency**: Currency code for pricing.
-- **adults**: Number of adults.
-- **children**: Number of children.
-- **children_ages**: Ages of children.
-- **sort_by**: Sorting criteria.
-- **min_price**: Minimum price filter.
-- **max_price**: Maximum price filter.
-- **property_types**: Filter by property type.
-- **amenities**: Filter by amenities.
-- **rating**: Filter by rating.
-- **brands**: Filter by hotel brands.
-- **hotel_class**: Filter by hotel class.
-- **free_cancellation**: Filter for free cancellation.
-- **special_offers**: Filter for special offers.
-- **eco_certified**: Filter for eco-certified properties.
-- **vacation_rentals**: Toggle between hotels and vacation rentals.
-- **bedrooms**: Minimum number of bedrooms (for vacation rentals).
-- **bathrooms**: Minimum number of bathrooms (for vacation rentals).
-- **next_page_token**: Token for paginated results.
-- **property_token**: Token for detailed property information.
-- **no_cache**: Toggle to bypass cache.
-- **aasync**: Toggle for asynchronous request handling.
-- **zero_trace**: Enterprise feature for enhanced privacy.
+- **q**: The search query string used in a typical Google Hotels search.
+- **check_in_date / check_out_date**: Dates for check-in and check-out in the format YYYY-MM-DD.
+- **gl / hl**: Country and language codes for localizing the search results.
+- **currency**: Specifies the currency for price display.
+- **adults / children / children_ages**: Defines the number of adults and children, along with their ages.
+- **sort_by**: Determines the sorting order of the results (e.g., by price, rating, or reviews).
+- **min_price / max_price**: Sets the price range for the search results.
+- **property_types / amenities**: Filters results by property type and available amenities.
+- **rating / brands / hotel_class**: Filters results by rating, brand, and hotel class.
+- **free_cancellation / special_offers / eco_certified**: Filters for specific features like free cancellation, special offers, and eco-certification.
+- **vacation_rentals / bedrooms / bathrooms**: Parameters specific to vacation rental searches.
+- **next_page_token / property_token**: Used for pagination and retrieving detailed property information.
+- **no_cache / aasync / zero_trace**: Advanced options for caching, asynchronous operations, and enterprise-level privacy.
 
-## Configuration Parameters Explanation
-
-The application uses environment variables for configuration:
-
-- **SERP_API_KEY**: API key for authenticating requests to SerpAPI. This should be set in a `.env` file or environment variable.
-
-## Installation Instructions
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/yourusername/aigeon-ai.google-hotels-api.git
-   cd aigeon-ai.google-hotels-api
-   ```
-
-2. **Install Dependencies**:
-   Ensure you have Python installed, then run:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Environment Setup**:
-   Create a `.env` file in the root directory and add your SerpAPI key:
-   ```plaintext
-   SERP_API_KEY=your_serp_api_key
-   ```
-
-## Usage Instructions
-
-1. **Start the Server**:
-   Run the server using the following command:
-   ```bash
-   python server.py
-   ```
-
-2. **Perform a Search**:
-   Use the `search_hotels` function with the desired parameters to perform a hotel search. Refer to the function's parameter list for customization options.
-
-## Requirements/Dependencies
-
-- Python 3.7+
-- `requests`: For making HTTP requests.
-- `pydantic`: For data validation and settings management.
-- `python-dotenv`: For loading environment variables from a `.env` file.
-- `mcp.server` and `fastmcp`: For server management and API handling.
-
-This README provides a comprehensive guide to understanding, installing, and using the `aigeon-ai.google-hotels-api` project. For further details, refer to the code comments and documentation within the project files.
+This function is designed to provide users with a flexible and powerful tool for accessing hotel data, making it suitable for a wide range of applications in travel and hospitality industries.
+```
